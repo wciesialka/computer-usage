@@ -27,3 +27,7 @@ William Ciesialka
 ## Licensing
 
 This project is licensed under the MIT License - see [LICENSE](LICENSE) for details
+
+## Acknowledgements
+
+MatPlotLib Team
