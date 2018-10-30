@@ -2,8 +2,10 @@ import matplotlib.pyplot as plt
 import psutil
 import time
 import sys
+import math
 
 DELAY = 5
+MAX_TICKS = 3
 
 plt.ion()
 
@@ -32,13 +34,24 @@ class ComputerUsagePlot():
 		self.axs.set_autoscaley_on(True)
 		self.axs.set_ylim(self.min_y,self.max_y)
 
+	def linspace(self,lower,upper,length):
+		ret = []
+		for x in range(length):
+			ret.append(round(lower + x*(upper-lower)/(length-1)))
+		return ret
+
 	def update_lines(self):
 		self.cpu_usage.set_xdata(self.TIMES)
 		self.cpu_usage.set_ydata(self.CPU_USAGE)
 		self.ram_usage.set_xdata(self.TIMES)
 		self.ram_usage.set_ydata(self.RAM_USAGE)
+		
+		tick_array = self.linspace(self.TIMES[0],self.TIMES[len(self.TIMES)-1],MAX_TICKS) #[self.TIMES[0],self.TIMES[len(self.TIMES)-1]]
+		tick_labels = []
+		for i in tick_array:
+			tick_labels.append(self.FORMATTED_TIMES[i])
 
-		plt.xticks(self.TIMES,self.FORMATTED_TIMES,rotation=45)
+		plt.xticks(tick_array,tick_labels,rotation=45)
 
 		self.axs.relim()
 		self.axs.autoscale_view()
@@ -65,6 +78,10 @@ if __name__=="__main__":
 		DELAY = int(sys.argv[1]) or 5
 	except:
 		DELAY = 5
+	try:
+		MAX_TICKS = int(sys.argv[2]) or 3
+	except:
+		MAX_TICKS = 3
 	psutil.cpu_percent(interval=None) #throw away
 	time.sleep(1)
 	compuseplot = ComputerUsagePlot()

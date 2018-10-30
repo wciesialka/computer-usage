@@ -19,7 +19,7 @@ On desktop, download as a zip and run the script that way.
 
 ### Running
 
-Run using `python3 computer-usage-plotter.py {Optional: Delay between each poll}`
+Run using `python3 computer-usage-plotter.py {Optional: Delay between each poll} {Optional: Max number of ticks on the X-Axes}`
 
 ## Authors
 
