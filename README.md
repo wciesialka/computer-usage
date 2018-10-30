@@ -8,6 +8,7 @@ Simple Python3 script to track CPU, RAM, and SWAP usage over time.
 ```
 Python3
 MatPlotLib
+psutil
 ```
 
 ### Installing
