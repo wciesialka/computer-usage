@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
-import numpy as np
 import psutil
 import time
+import sys
 
 DELAY = 5
 
@@ -61,6 +61,10 @@ class ComputerUsagePlot():
 			time.sleep(DELAY)
 
 if __name__=="__main__":
+	try:
+		DELAY = int(sys.argv[1]) or 5
+	except:
+		DELAY = 5
 	psutil.cpu_percent(interval=None) #throw away
 	time.sleep(1)
 	compuseplot = ComputerUsagePlot()

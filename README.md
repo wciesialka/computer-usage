@@ -19,7 +19,7 @@ On desktop, download as a zip and run the script that way.
 
 ### Running
 
-Run using `python3 computer-usage-plotter.py`
+Run using `python3 computer-usage-plotter.py {Optional: Delay between each poll}`
 
 ## Authors
 
